@@ -54,5 +54,23 @@ namespace BowlingGameTests
             // assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void Get_PlayerScore_After_Rolling_Only_Strikes()
+        {
+            // arrange
+            Player player = new Player();
+            int expected = 300;
+
+            // act
+            for (int i = 1; i <= 12; i++)
+            {
+                player.Roll(10);
+            }
+            int actual = player.GetTotalScore();
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
