@@ -21,5 +21,20 @@ namespace BowlingGameTests
 
             player.Roll(5);
         }
+
+        [TestMethod]
+        public void Check_If_Scorecard_Is_Filled_Properly()
+        {
+            // arrange
+            Player player = new Player();
+            int expected = 3;
+
+            // act
+            player.Roll(3);
+            int actual = player.scoreCard[0];
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
