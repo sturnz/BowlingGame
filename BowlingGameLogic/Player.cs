@@ -20,12 +20,18 @@
             {
                 totalScore += scoreCard[index];
 
-                if(scoreCard[index] == 10)
+                if(scoreCard[index] == 10)                              // rolled a strike
                 {
                     totalScore += scoreCard[index + 1];
                     totalScore += scoreCard[index + 2];
                 }
-                else
+                else if (scoreCard[index] + scoreCard[index+1] == 10)   // rolled a spare
+                {
+                    totalScore += scoreCard[index + 1];
+                    totalScore += scoreCard[index + 2];
+                    index++;
+                }
+                else                                                    
                 {
                     totalScore += scoreCard[index + 1];
                 }
