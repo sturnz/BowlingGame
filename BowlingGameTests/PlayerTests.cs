@@ -12,5 +12,14 @@ namespace BowlingGameTests
 
             Assert.IsNotNull(player);
         }
+
+        [TestMethod]
+        public void Roll_Ball()
+        {
+            // arrange
+            Player player = new Player();
+
+            player.Roll(5);
+        }
     }
 }
