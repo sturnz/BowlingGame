@@ -22,13 +22,11 @@
 
                 if (RolledAStrike(index))                            
                 {
-                    totalScore += scoreCard[index + 1];
-                    totalScore += scoreCard[index + 2];
+                    totalScore += BonusPoints(index);
                 }
                 else if (RolledASpare(index))   
                 {
-                    totalScore += scoreCard[index + 1];
-                    totalScore += scoreCard[index + 2];
+                    totalScore += BonusPoints(index);
                     index++;
                 }
                 else                                                    
@@ -49,6 +47,11 @@
         bool RolledASpare(int index)
         {
             return scoreCard[index] + scoreCard[index + 1] == 10;
+        }
+
+        int BonusPoints(int index)
+        {
+            return scoreCard[index + 1] + scoreCard[index + 2];
         }
     }
 }
