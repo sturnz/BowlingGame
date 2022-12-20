@@ -11,6 +11,15 @@
             numberOfRoll++;
         }
 
+        public void Roll(int[] fallenPins)
+        {
+            foreach (var roll in fallenPins)
+            {
+                scoreCard[numberOfRoll] = roll;
+                numberOfRoll++;
+            }
+        }
+
         public int GetTotalScore()
         {
             int totalScore  = 0;
