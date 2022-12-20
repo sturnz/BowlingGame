@@ -90,5 +90,21 @@ namespace BowlingGameTests
             // assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void Get_PlayerScore_Roll_With_Array()
+        {
+            // arrange
+            Player player = new Player();
+            int expected = 300;
+            int[] given = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 };
+
+            // act
+            player.Roll(given);
+            int actual = player.GetTotalScore();
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
