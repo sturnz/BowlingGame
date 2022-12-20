@@ -10,5 +10,17 @@
             scoreCard[numberOfRoll] = fallenPins;
             numberOfRoll++;
         }
+
+        public int GetTotalScore()
+        {
+            int totalScore = 0;
+
+            foreach (var roll in scoreCard)
+            {
+                totalScore += roll;
+            }
+
+            return totalScore;
+        }
     }
 }
