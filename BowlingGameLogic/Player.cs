@@ -20,12 +20,12 @@
             {
                 totalScore += scoreCard[index];
 
-                if(scoreCard[index] == 10)                              // rolled a strike
+                if (RolledAStrike(index))                            
                 {
                     totalScore += scoreCard[index + 1];
                     totalScore += scoreCard[index + 2];
                 }
-                else if (scoreCard[index] + scoreCard[index+1] == 10)   // rolled a spare
+                else if (RolledASpare(index))   
                 {
                     totalScore += scoreCard[index + 1];
                     totalScore += scoreCard[index + 2];
@@ -39,6 +39,16 @@
             }
 
             return totalScore;
+        }
+
+        bool RolledAStrike(int index)
+        {
+            return scoreCard[index] == 10;
+        }
+
+        bool RolledASpare(int index)
+        {
+            return scoreCard[index] + scoreCard[index + 1] == 10;
         }
     }
 }
