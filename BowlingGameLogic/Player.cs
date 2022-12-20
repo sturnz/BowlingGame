@@ -13,11 +13,23 @@
 
         public int GetTotalScore()
         {
-            int totalScore = 0;
+            int totalScore  = 0;
+            int index       = 0;
 
-            foreach (var roll in scoreCard)
+            for (int frame = 1; frame <= 10; frame++)
             {
-                totalScore += roll;
+                totalScore += scoreCard[index];
+
+                if(scoreCard[index] == 10)
+                {
+                    totalScore += scoreCard[index + 1];
+                    totalScore += scoreCard[index + 2];
+                }
+                else
+                {
+                    totalScore += scoreCard[index + 1];
+                }
+                index++;
             }
 
             return totalScore;
