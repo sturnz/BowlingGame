@@ -8,11 +8,13 @@ namespace BowlingGameLogic
 {
     public class Game
     {
+        public List<Player> listOfPlayers = new();
+
         public void Run(int numberOfPlayers)
         {
             for (int index = 0; index < numberOfPlayers; index++)
             {
-                Player player = new Player();
+                listOfPlayers.Add(new Player());
             }
         }
     }
