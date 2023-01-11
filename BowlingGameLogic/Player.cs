@@ -23,14 +23,41 @@
                     break;
 
                 case string Pins:
+                    switch (Pins)
+                    {
+                        case "x":
+                            Pins = "10";
+                            break;
+                        case "/":
+                            Pins = (10 - scoreCard[numberOfRoll - 1]).ToString();
+                            break;
+                        case "-":
+                            Pins = "0";
+                            break;
+                    }
                     scoreCard[numberOfRoll] = Convert.ToInt32(Pins);
                     numberOfRoll++;
                     break;
 
                 case string[] Pins:
-                    foreach (var roll in Pins)
+                    for (int index = 0; index < Pins.Length; index++)
                     {
-                        scoreCard[numberOfRoll] = Convert.ToInt32(roll);
+                        switch (Pins[index])
+                        {
+                            case "x":
+                                Pins[index] = "10";
+                                break;
+                            case "/":
+                                Pins[index] = (10 - scoreCard[numberOfRoll - 1]).ToString();
+                                break;
+                            case "-":
+                                Pins[index] = "0";
+                                break;
+                            default:
+                                Pins[index] = Pins[index];
+                                break;
+                        }
+                        scoreCard[numberOfRoll] = Convert.ToInt32(Pins[index]);
                         numberOfRoll++;
                     }
                     break;
