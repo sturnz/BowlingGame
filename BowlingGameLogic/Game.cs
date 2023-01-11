@@ -16,6 +16,25 @@ namespace BowlingGameLogic
             {
                 listOfPlayers.Add(new Player());
             }
+
+            for (int frame = 1; frame <= 10; frame++)
+            {
+                foreach (var player in listOfPlayers)
+                {
+                    Console.WriteLine("How many pins are down?");
+                    int fallenPins = Convert.ToInt32(Console.ReadLine());
+
+                    player.Roll(fallenPins);
+
+                    if (fallenPins != 10)
+                    {
+                        Console.WriteLine("How many pins are down?");
+                        fallenPins = Convert.ToInt32(Console.ReadLine());
+
+                        player.Roll(fallenPins);
+                    }
+                }
+            }
         }
     }
 }
