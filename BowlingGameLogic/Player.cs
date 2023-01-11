@@ -2,21 +2,38 @@
 {
     public class Player
     {
-        public int[] scoreCard = new int[21];
-        int numberOfRoll = 0;
+        public int[]    scoreCard       = new int[21];
+        int             numberOfRoll    = 0;
 
-        public void Roll(int fallenPins)
+        public void Roll(object fallenPins)
         {
-            scoreCard[numberOfRoll] = fallenPins;
-            numberOfRoll++;
-        }
-
-        public void Roll(int[] fallenPins)
-        {
-            foreach (var roll in fallenPins)
+            switch (fallenPins)
             {
-                scoreCard[numberOfRoll] = roll;
-                numberOfRoll++;
+                case int Pins:
+                    scoreCard[numberOfRoll] = Pins;
+                    numberOfRoll++;
+                    break;
+
+                case int[] Pins:
+                    foreach (var roll in Pins)
+                    {
+                        scoreCard[numberOfRoll] = roll;
+                        numberOfRoll++;
+                    }
+                    break;
+
+                case string Pins:
+                    scoreCard[numberOfRoll] = Convert.ToInt32(Pins);
+                    numberOfRoll++;
+                    break;
+
+                case string[] Pins:
+                    foreach (var roll in Pins)
+                    {
+                        scoreCard[numberOfRoll] = Convert.ToInt32(roll);
+                        numberOfRoll++;
+                    }
+                    break;
             }
         }
 
