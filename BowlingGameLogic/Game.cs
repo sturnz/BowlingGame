@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BowlingGameLogic
 {
-    public class Game
+    public class Game 
     {
         public List<Player> listOfPlayers = new();
 
@@ -21,20 +21,57 @@ namespace BowlingGameLogic
             {
                 foreach (var player in listOfPlayers)
                 {
-                    Console.WriteLine("How many pins are down?");
-                    int fallenPins = Convert.ToInt32(Console.ReadLine());
+                    bool    rolledAStrike   = false;
+                    bool    rolledASpare    = false;
+                    int     framePoints     = 0;
+                    int     fallenPins      = GetFallenPins();
 
                     player.Roll(fallenPins);
+                    framePoints += fallenPins;
 
-                    if (fallenPins != 10)
+                    if (fallenPins == 10)
                     {
-                        Console.WriteLine("How many pins are down?");
-                        fallenPins = Convert.ToInt32(Console.ReadLine());
+                        rolledAStrike = true;
+                    }
+
+                    if (!rolledAStrike)
+                    {
+                        fallenPins = GetFallenPins();
 
                         player.Roll(fallenPins);
+                        framePoints += fallenPins;
+
+                        if (framePoints == 10)
+                        {
+                            rolledASpare = true;
+                        }
                     }
+
+                    if(frame == 10)
+                    {
+                        if (rolledAStrike)
+                        {
+                            fallenPins = GetFallenPins();
+                            player.Roll(fallenPins);
+                            fallenPins = GetFallenPins();
+                            player.Roll(fallenPins);
+                        }
+                        else if (rolledASpare)
+                        {
+                            fallenPins = GetFallenPins();
+                            player.Roll(fallenPins);
+                        }
+                    }
+                   
                 }
             }
+
+        }
+
+        int GetFallenPins()
+        {
+            Console.WriteLine("How many pins are down?");
+            return Convert.ToInt32(Console.ReadLine());
         }
     }
 }
