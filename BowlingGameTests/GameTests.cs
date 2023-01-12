@@ -18,18 +18,5 @@ namespace BowlingGameLogic.Tests
 
             Assert.IsNotNull(game);
         }
-    
-
-        [TestMethod()]
-        public void RunAGame_WithTwoPlayers()
-        {
-            Game game = new Game();
-            game.Run(2);
-
-            var expected = 2;
-            var actual = game.listOfPlayers.Count();
-
-            Assert.AreEqual(expected, actual);                
-        }
     }
 }

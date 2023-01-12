@@ -26,8 +26,8 @@ namespace BowlingGameTests
         public void Check_If_Scorecard_Is_Filled_Properly()
         {
             // arrange
-            Player player = new Player();
-            int expected = 3;
+            Player  player      = new Player();
+            int     expected    = 3;
 
             // act
             player.Roll(3);
@@ -41,8 +41,8 @@ namespace BowlingGameTests
         public void Get_PlayerScore_After_Rolling_Only_2s()
         {
             // arrange
-            Player player = new Player();
-            int expected = 40;
+            Player  player      = new Player();
+            int     expected    = 40;
 
             // act
             for (int i = 1; i <= 20; i++)
@@ -59,8 +59,8 @@ namespace BowlingGameTests
         public void Get_PlayerScore_After_Rolling_Only_Strikes()
         {
             // arrange
-            Player player = new Player();
-            int expected = 300;
+            Player  player      = new Player();
+            int     expected    = 300;
 
             // act
             for (int i = 1; i <= 12; i++)
@@ -77,8 +77,8 @@ namespace BowlingGameTests
         public void Get_PlayerScore_After_Rolling_Only_Spares()
         {
             // arrange
-            Player player = new Player();
-            int expected = 150;
+            Player  player      = new Player();
+            int     expected    = 150;
 
             // act
             for (int i = 1; i <= 21; i++)
@@ -95,9 +95,9 @@ namespace BowlingGameTests
         public void Get_PlayerScore_Roll_With_Array()
         {
             // arrange
-            Player player = new Player();
-            int expected = 300;
-            int[] given = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 };
+            Player  player      = new Player();
+            int     expected    = 300;
+            int[]   given       = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 };
 
             // act
             player.Roll(given);
@@ -111,9 +111,9 @@ namespace BowlingGameTests
         public void Get_PlayerScore_Roll_With_String_Array()
         {
             // arrange
-            Player player = new Player();
-            int expected = 300;
-            string[] given = { "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10"};
+            Player      player      = new Player();
+            int         expected    = 300;
+            string[]    given       = { "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10"};
 
             // act
             player.Roll(given);
@@ -122,5 +122,39 @@ namespace BowlingGameTests
             // assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void Get_PlayerScore_Roll_With_String_Array_Using_Special_Letters()
+        {
+            // arrange
+            Player player = new Player();
+            int expected = 150;
+            string[] given = { "5", "/", "5", "/", "5", "/", "5", "/", "5", "/", "5", "/", "5", "/", "5", "/", "5", "/", "5", "/", "5" };
+
+            // act
+            player.Roll(given);
+            int actual = player.GetTotalScore();
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Get_PlayerScore_Roll_With_String_Array_Using_Special_Letters_Strikes()
+        {
+            // arrange
+            Player player = new Player();
+            int expected = 300;
+            string[] given = { "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x" };
+
+            // act
+            player.Roll(given);
+            int actual = player.GetTotalScore();
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        
     }
 }
