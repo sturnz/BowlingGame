@@ -8,14 +8,16 @@ namespace BowlingGameConsole
         {
             List<Player>    listOfPlayers   = new();
             Game            game            = new();
+            int             numberOfPlayers;
 
             Console.WriteLine("How many players are playing?");
-            game.Run(Convert.ToInt32(Console.ReadLine()));
+            numberOfPlayers = Convert.ToInt32(Console.ReadLine());
 
-            
+            game.Run(numberOfPlayers); 
+
             foreach (var player in game.listOfPlayers)
             {
-                Console.WriteLine($"Total points of Player {listOfPlayers.IndexOf(player)+2}: " + player.GetTotalScore());
+                Console.WriteLine($"Total points of Player {listOfPlayers.IndexOf(player) + 2}: " + player.GetTotalScore());
             }
         }
     }
