@@ -1,11 +1,14 @@
-﻿namespace BowlingGameLogic
+﻿using System;
+using System.Reflection;
+
+namespace BowlingGameLogic
 {
     public class Player
     {
         public int[]    scoreCard       = new int[21];
         int             numberOfRoll    = 0;
 
-        public void Roll(object fallenPins)
+        public void Roll(object fallenPins) 
         {
             switch (fallenPins)
             {
@@ -15,26 +18,15 @@
                     break;
 
                 case int[] Pins:
-                    foreach (var roll in Pins)
+                    foreach (var Pin in Pins)
                     {
-                        scoreCard[numberOfRoll] = roll;
+                        scoreCard[numberOfRoll] = Pin;
                         numberOfRoll++;
                     }
                     break;
 
                 case string Pins:
-                    switch (Pins)
-                    {
-                        case "x":
-                            Pins = "10";
-                            break;
-                        case "/":
-                            Pins = (10 - scoreCard[numberOfRoll - 1]).ToString();
-                            break;
-                        case "-":
-                            Pins = "0";
-                            break;
-                    }
+                    Pins                    = CheckForSpecialNotation(Pins);
                     scoreCard[numberOfRoll] = Convert.ToInt32(Pins);
                     numberOfRoll++;
                     break;
@@ -42,21 +34,7 @@
                 case string[] Pins:
                     for (int index = 0; index < Pins.Length; index++)
                     {
-                        switch (Pins[index])
-                        {
-                            case "x":
-                                Pins[index] = "10";
-                                break;
-                            case "/":
-                                Pins[index] = (10 - scoreCard[numberOfRoll - 1]).ToString();
-                                break;
-                            case "-":
-                                Pins[index] = "0";
-                                break;
-                            default:
-                                Pins[index] = Pins[index];
-                                break;
-                        }
+                        Pins[index]             = CheckForSpecialNotation(Pins[index]);
                         scoreCard[numberOfRoll] = Convert.ToInt32(Pins[index]);
                         numberOfRoll++;
                     }
@@ -105,6 +83,23 @@
         int BonusPoints(int index)
         {
             return scoreCard[index + 1] + scoreCard[index + 2];
+        }
+
+        string CheckForSpecialNotation(string Pins) // :(
+        {
+            switch (Pins)
+            {
+                case "x":
+                    Pins = "10";
+                    break;
+                case "/":
+                    Pins = (10 - scoreCard[numberOfRoll - 1]).ToString();
+                    break;
+                case "-":
+                    Pins = "0";
+                    break;
+            }
+            return Pins;
         }
     }
 }
