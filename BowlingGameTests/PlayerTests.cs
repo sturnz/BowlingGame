@@ -156,6 +156,22 @@ namespace BowlingGameTests
         }
 
         [TestMethod]
+        public void Get_PlayerScore_Roll_With_String_Array_Using_Special_Letters_Zeros()
+        {
+            // arrange
+            Player player = new Player();
+            int expected = 0;
+            string[] given = { "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-" };
+
+            // act
+            player.Roll(given);
+            int actual = player.GetTotalScore();
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void Get_PlayerScore_Roll_Only_Twos()
         {
             // arrange
