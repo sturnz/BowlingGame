@@ -155,6 +155,20 @@ namespace BowlingGameTests
             Assert.AreEqual(expected, actual);
         }
 
-        
+        [TestMethod]
+        public void Get_PlayerScore_Roll_Only_Twos()
+        {
+            // arrange
+            Player player = new Player();
+            int expected = 40;
+            int[] given = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2};
+
+            // act
+            player.Roll(given);
+            int actual = player.GetTotalScore();
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

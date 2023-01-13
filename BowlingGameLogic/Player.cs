@@ -63,6 +63,7 @@ namespace BowlingGameLogic
                 else                                                    
                 {
                     totalScore += scoreCard[index + 1];
+                    index++;
                 }
                 index++;
             }
