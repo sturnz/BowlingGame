@@ -21,6 +21,8 @@ namespace BowlingGameLogic
             {
                 foreach (var player in listOfPlayers)
                 {
+                    Console.WriteLine($"\nPlayer Number {listOfPlayers.IndexOf(player) + 1}:");
+
                     bool    rolledAStrike   = false;
                     bool    rolledASpare    = false;
                     int     framePoints     = 0;
@@ -51,6 +53,8 @@ namespace BowlingGameLogic
                     {
                         if (rolledAStrike)
                         {
+                            Console.WriteLine("BONUS ROUND");
+
                             fallenPins = GetFallenPins();
                             player.Roll(fallenPins);
                             fallenPins = GetFallenPins();
@@ -58,6 +62,7 @@ namespace BowlingGameLogic
                         }
                         else if (rolledASpare)
                         {
+                            Console.WriteLine("BONUS ROUND");
                             fallenPins = GetFallenPins();
                             player.Roll(fallenPins);
                         }
